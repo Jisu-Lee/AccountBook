@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>가계부</title>
+        <link rel="stylesheet" href="mainstyle.css" />
+  </head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <div class="logo"> 가계부 티끌모아 </div>
+    </div>
+    <!-- //header -->
+    <div class="container">
+      <div class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
+          <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
+          <li class="nav-item"> <a href="" class="nav-link">회원정보</a> </li>
+          <li class="nav-item"> <a href="" class="nav-link">로그아웃</a> </li>
+        </ul>
+      </div>
+      <!-- //nav -->
+      <div class="content">
+        <div class="content_header">
+        <button type="button" class="budgetbtn" id="budgetBtn">예산<br/>설정</button>
+        <table class="budget">
+          <thead>
+            <tr>
+              <th>월수입</th>
+              <th>월지출</th>
+              <th>잔액</th>
+            </tr>
+          </thead>
+          <tr>
+            <td> 1000000 </td>
+            <td> 100000 </td>
+            <td> 900000 </td>
+          </tr>
+        </table>
+        <!-- calendar -->
+        </div>
+        <caption> 2017-12 </caption>
+        <table class="cal">
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell">
+                <button type="button" id="add" class="add_btn">+</button><br />
+                <font color="red"> 3000 </font><br />
+                <font color="blue"> 1000 </font><br />
+                <font color="green"> 2000 </font><br />
+              </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>1</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+              <td>13</td>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+              <td>21</td>
+              <td>22</td>
+              <td>23</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>25</td>
+              <td>26</td>
+              <td>27</td>
+              <td>28</td>
+              <td>29</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>31</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- calendar -->
+      <table class="week_total">
+        <thead> <tr> <th> 주간지출 </th> </tr></thead>
+        <tbody>
+        <tr><td> 50000 </td></tr>
+        <tr><td> 40000 </td></tr>
+        <tr><td> 30000 </td></tr>
+        <tr><td> 20000 </td></tr>
+        <tr><td> 10000 </td></tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+    <!-- //container -->
+    <div class="footer">
+      <p class="copyright">&copy;영은지수 </p>
+     </div>
+  </div>
+  <!-- //footer -->
+  <div id="myModal" class="modal">
+      <div class="modal_content">
+        <div class="modal_header">
+          수입/지출 추가
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal_body">
+          <div class="modal_date">
+              날짜<br>
+              <input type="text" id="date" value="20171109">
+          </div>
+          <div class="modal_detail">
+              상세내역<br>
+              <input type="text" id="detail">
+          </div>
+          <div class="modal_price">
+              금액<br>
+              <input type="text" id="price">
+          </div>
+          <div class="modal_category">
+              카테고리<br>
+              <div class="expense">
+                  지출<br>
+                  <button type="button">음식</button>
+                  <button type="button">의류</button>
+                  <button type="button">문화생활</button>
+                  <button type="button">생필품</button>
+                  <button type="button">경조사</button>
+                  <button type="button">적금</button>
+                  <button type="button">기타</button>
+              </div>
+              <div class="income">
+                  수입<br>
+                  <button type="button">월급</button>
+                  <button type="button">용돈</button>
+                  <button type="button">아르바이트</button>
+                  <button type="button">보너스</button>
+                  <button type="button">기타</button>
+              </div>
+          </div>
+          <div class="modal_go">
+              <button type="button">GO</button>
+          </div>
+      </div>
+    </div>
+  </div>
+<!-- //modal -->
+</body>
+<script type="text/javascript" src="mainscript.js"></script>
+<!-- //frame -->
+</html>

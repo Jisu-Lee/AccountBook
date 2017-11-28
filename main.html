@@ -3,6 +3,7 @@
   <head>
       <title>가계부</title>
         <link rel="stylesheet" href="mainstyle.css" />
+        <link rel="stylesheet" href="modalstyle.css" />
   </head>
 <body>
   <div class="frame">
@@ -23,98 +24,22 @@
       <div class="content">
         <div class="content_header">
         <button type="button" class="budgetbtn" id="budgetBtn">예산<br/>설정</button>
-        <table class="budget">
-          <thead>
+          <table class="budget">
+            <thead>
+              <tr>
+                <th>월수입</th>
+                <th>월지출</th>
+                <th>잔액</th>
+              </tr>
+            </thead>
             <tr>
-              <th>월수입</th>
-              <th>월지출</th>
-              <th>잔액</th>
+              <td> 1000000 </td>
+              <td> 100000 </td>
+              <td> 900000 </td>
             </tr>
-          </thead>
-          <tr>
-            <td> 1000000 </td>
-            <td> 100000 </td>
-            <td> 900000 </td>
-          </tr>
         </table>
-        <!-- calendar -->
-        </div>
-        <caption> 2017-12 </caption>
-        <table class="cal">
-          <thead>
-            <tr>
-              <th>Sun</th>
-              <th>Mon</th>
-              <th>Tue</th>
-              <th>Wed</th>
-              <th>Thu</th>
-              <th>Fri</th>
-              <th>Sat</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cell">
-                <button type="button" id="add" class="add_btn">+</button><br />
-                <font color="red"> 3000 </font><br />
-                <font color="blue"> 1000 </font><br />
-                <font color="green"> 2000 </font><br />
-              </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td>1</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>11</td>
-              <td>12</td>
-              <td>13</td>
-              <td>14</td>
-              <td>15</td>
-              <td>16</td>
-            </tr>
-            <tr>
-              <td>17</td>
-              <td>18</td>
-              <td>19</td>
-              <td>20</td>
-              <td>21</td>
-              <td>22</td>
-              <td>23</td>
-            </tr>
-            <tr>
-              <td>24</td>
-              <td>25</td>
-              <td>26</td>
-              <td>27</td>
-              <td>28</td>
-              <td>29</td>
-              <td>30</td>
-            </tr>
-            <tr>
-              <td>31</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- calendar -->
+      </div>
+      <script type="text/javascript" src="calendar.js"></script>
       <table class="week_total">
         <thead> <tr> <th> 주간지출 </th> </tr></thead>
         <tbody>

@@ -11,7 +11,6 @@ switch($_GET['mode']){
   case 'insert_trans':
 
     # transaction(transID, userID, amount, category, date, detail)
-
     $stmt = $connect->prepare("INSERT INTO transaction (transID, userID, amount, category, date_, detail) VALUES (:transID, :userID, :amount, :category, :date_, :detail) ");
     $stmt->bindParam(':transID', $transID);
     $stmt->bindParam(':userID', $userID);
@@ -20,8 +19,12 @@ switch($_GET['mode']){
     $stmt->bindParam(':date_', $date);
     $stmt->bindParam(':detail', $detail);
 
+    $cnt = $connect->prepare("SELECT count(*) FROM transaction");
+    $cnt->execute();
+    $num = $cnt->fetchColumn();
+    $num = $num + 1;
 
-    $transID = '2013';
+    $transID = (string)$num;
     $userID = $_COOKIE["ID"];
     $amount = $_POST['amount'];
     $category = $_POST['category'];
@@ -36,4 +39,3 @@ switch($_GET['mode']){
 
 }
 ?>
-

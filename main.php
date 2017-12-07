@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
 		<p style="text-align: center;">로그인되지 않았습니다.</p>
 		<? } else { ?>

@@ -76,24 +76,21 @@ button.budgetbtn{
   height:60px;
 }
 
-.budget_table{
-  border: 1px solid black;
-}
-
 table.budget {
-  border: 1px solid cadetblue;
+  background-color: cadetblue;
   border-collapse: collapse;
   margin: 5px;
-  margin-right:20%;
   float:right;
 }
 
 table.budget td{
-  border: 1px solid cadetblue;
+  border: 1px solid white;
+  padding:3px 6px;
 }
 
 table.budget th{
-  border: 1px solid cadetblue;
+  border: 1px solid white;
+  padding:3px 6px;
 }
 
 caption {

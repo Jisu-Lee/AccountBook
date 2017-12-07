@@ -33,7 +33,7 @@ var TH_end = '</TH>';
 var span_day_start = '<span class="day_header">';
 var span_day_end = '</span>';
 var add_btn = '<button type="button" onclick="add()" class="add_btn">+</button>';
-var day_content = '<font color="#d90057"> 3000 </font><br /> <font color="#ef7c29"> 1000 </font><br /> <font color="#00a28b"> 2000 </font><br /> '
+var day_content = '<font color="#d90057">3000</font><br /> <font color="#ef7c29"> 1000 </font><br /> <font color="#00a28b"> 2000 </font><br /> '
 
 /* BEGIN CODE FOR CALENDAR
 NOTE: You can format the 'BORDER', 'BGCOLOR', 'CELLPADDING', 'BORDERCOLOR'

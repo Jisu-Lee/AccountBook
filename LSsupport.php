@@ -1,16 +1,14 @@
 <?php
-echo "help";
 $host = 'localhost';
 $user = 'root';
 $pw = 'root';
 $dbName = 'account_book';
 $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-$db = new PDO('mysql:host=localhost;dbname=account_book', $user, $pw, $pdo_options);
+$db = new PDO('mysql:host=localhost;dbname=account_book;charset=utf8;', $user, $pw, $pdo_options);
 
 switch($_GET['mode']){
     case 'signUp':
 
-      echo "why";
       $stmt = $db->prepare("INSERT INTO member (ID, password, name) VALUES (:ID, :password, :name)");
       $stmt->bindParam(':ID',$ID);
       $stmt->bindParam(':password',$password);
@@ -34,7 +32,7 @@ switch($_GET['mode']){
             $stmt = $db->prepare("SELECT * FROM member WHERE ID=:ID AND password=:password");
             $ID = $_POST['ID'];
             $password = $_POST['password'];
-            echo $ID;
+
             #$Name = $_POST['name'];
             $stmt->bindParam(':ID',$ID);
             $stmt->bindParam(':password',$password);
@@ -60,10 +58,9 @@ switch($_GET['mode']){
        endforeach;
      }
      else {
-       echo "no...";
-       echo "<script>alert(\"로그인에 실패하셨습니다.\");</script>";
-       ?><p> <a href = "mainLogin.php">돌아가기</a></p>
-       <p>아직 회원이 아니신가요? <a href = "signUp.php">회원가입</a></p><?php
+
+       echo "<script>alert(\"로그인에 실패하셨습니다.\");window.location.href='mainLogin.php';</script>";
+
        #header("Location: mainLogin.php");
      }
 

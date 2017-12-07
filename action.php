@@ -9,6 +9,7 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 switch($_GET['mode']){
   case 'insert_trans':
+
     # transaction(transID, userID, amount, category, date, detail)
 
     $stmt = $connect->prepare("INSERT INTO transaction (transID, userID, amount, category, date_, detail) VALUES (:transID, :userID, :amount, :category, :date_, :detail) ");
@@ -20,22 +21,13 @@ switch($_GET['mode']){
     $stmt->bindParam(':detail', $detail);
 
 
-    $transID = '2014ddssss';
+    $transID = '2013';
     $userID = $_COOKIE["ID"];
-
     $amount = $_POST['amount'];
     $category = $_POST['category'];
     $date = $_POST['date'];
     $detail = $_POST['detail'];
 
-    echo $transID;
-    echo $userID;
-    echo $amount;
-    echo $date;
-    echo $category;
-    echo $detail;
-
-echo"1";
     $stmt->execute();
     print_r($stmt->errorInfo());
     echo "records inserted successfully";
@@ -43,3 +35,5 @@ echo"1";
     break;
 
 }
+?>
+

@@ -15,6 +15,7 @@ function setCategory(val){
   category.value = val;
 }
 
+
 function hide_and_show_func(){
   var x = document.getElementById("hide_and_show_budget");
     if (x.style.display === "none") {

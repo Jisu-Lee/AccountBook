@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
 		<p style="text-align: center;">로그인되지 않았습니다.</p>
 		<? } else { ?>
@@ -22,16 +23,19 @@
           <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
           <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
           <li class="nav-item"> <a href="" class="nav-link">회원정보</a> </li>
+
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
           <li class="nav-item"> <a href="./mainLogin.php" class="nav-link">로그인</a> </li>
           <? } else { ?>
             <li class="nav-item"> <a href="./LSsupport.php?mode=signOut" class="nav-link">로그아웃</a> </li>
             <? } ?>
+
         </ul>
       </div>
       <!-- //nav -->
       <div class="content">
         <div class="content_header">
+
 <div  style="display:inline-block">
             <button type="button" class="budgetbtn" id="budgetBtn" onclick="hide_and_show_func()">예산<br/>설정</button>
           </div>
@@ -41,6 +45,7 @@
             amount : <input type="text" size="3" name="amount" >
             <input type="submit" value="Save"/>
           </div>
+
           <table class="budget">
             <thead>
               <tr>

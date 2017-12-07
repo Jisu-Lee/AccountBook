@@ -11,6 +11,7 @@ switch($_GET['mode']){
   case 'insert_trans':
 
     # transaction(transID, userID, amount, category, date, detail)
+
     $stmt = $connect->prepare("INSERT INTO transaction (transID, userID, amount, category, date_, detail) VALUES (:transID, :userID, :amount, :category, :date_, :detail) ");
     $stmt->bindParam(':transID', $transID);
     $stmt->bindParam(':userID', $userID);
@@ -19,8 +20,9 @@ switch($_GET['mode']){
     $stmt->bindParam(':date_', $date);
     $stmt->bindParam(':detail', $detail);
 
+
     $transID = '2013';
-    $userID = '1001';
+    $userID = $_COOKIE["ID"];
     $amount = $_POST['amount'];
     $category = $_POST['category'];
     $date = $_POST['date'];
@@ -34,3 +36,4 @@ switch($_GET['mode']){
 
 }
 ?>
+

@@ -14,3 +14,14 @@ span.onclick = function() {
 function setCategory(val){
   category.value = val;
 }
+
+
+function hide_and_show_func(){
+  var x = document.getElementById("hide_and_show_budget");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        x.style.display = "inline-block";
+    } else {
+        x.style.display = "none";
+    }
+}

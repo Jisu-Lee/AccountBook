@@ -13,10 +13,6 @@ var DAYS_OF_WEEK = 7;    // "constant" for number of days in a week
 var DAYS_OF_MONTH = 31;    // "constant" for number of days in a month
 var cal;    // Used for printing
 
-var money_in = 0;
-var money_out =0 ;
-var money_total = 0;
-
 Calendar.setDate(1);    // Start the calendar day at '1'
 Calendar.setMonth(month);    // Start the calendar month at now
 
@@ -95,7 +91,7 @@ if( Calendar.getDate() > index )
   // PRINTS DAY
   else if( today < Calendar.getDate()){
       cal += TD_start + span_day_start + day + add_btn + span_day_end + '<br />';
-      cal += '<br/><br/><br/><font color="#00a28b"> 3000 </font> ';
+      cal += '<br/><br/><br/><font color="#00a28b"> 2000 </font> ';
       cal += TD_end;
     }
 

@@ -65,47 +65,49 @@
           <span class="close">&times;</span>
         </div>
         <div class="modal_body">
+        <form action="./action.php?mode=insert_trans" method="POST">
           <div class="modal_date">
               날짜<br>
-              <input type="text" id="date" value="20171109">
+              <input type="text" id="date" name="date" value="2017-11-09">
           </div>
           <div class="modal_detail">
               상세내역<br>
-              <input type="text" id="detail">
+              <input type="text" id="detail" name="detail">
           </div>
           <div class="modal_price">
               금액<br>
-              <input type="text" id="price">
+              <input type="text" id="price" name="amount">
           </div>
           <div class="modal_category">
               카테고리<br>
+              <input type="text" id="category" name="category" />
               <div class="expense">
                   지출<br>
-                  <button type="button">음식</button>
-                  <button type="button">의류</button>
-                  <button type="button">문화생활</button>
-                  <button type="button">생필품</button>
-                  <button type="button">경조사</button>
-                  <button type="button">적금</button>
-                  <button type="button">기타</button>
+                  <button type="button" value="지출:음식" onclick="setCategory(this.value)">음식</button>
+                  <button type="button" value="지출:의류" onclick="setCategory(this.value)">의류</button>
+                  <button type="button" value="지출:문화생활" onclick="setCategory(this.value)">문화생활</button>
+                  <button type="button" value="지출:생필품" onclick="setCategory(this.value)">생필품</button>
+                  <button type="button" value="지출:경조사" onclick="setCategory(this.value)">경조사</button>
+                  <button type="button" value="지출:적금" onclick="setCategory(this.value)">적금</button>
+                  <button type="button" value="지출:기타" onclick="setCategory(this.value)">기타</button>
               </div>
               <div class="income">
                   수입<br>
-                  <button type="button">월급</button>
-                  <button type="button">용돈</button>
-                  <button type="button">아르바이트</button>
-                  <button type="button">보너스</button>
-                  <button type="button">기타</button>
+                  <button type="button" value="수입:월급" onclick="setCategory(this.value)">월급</button>
+                  <button type="button" value="수입:용돈" onclick="setCategory(this.value)">용돈</button>
+                  <button type="button" value="수입:아르바이트" onclick="setCategory(this.value)">아르바이트</button>
+                  <button type="button" value="수입:보너스" onclick="setCategory(this.value)">보너스</button>
+                  <button type="button" value="수입:기타" onclick="setCategory(this.value)">기타</button>
               </div>
-          </div>
-          <div class="modal_go">
-              <button type="button">GO</button>
-          </div>
+            </div>
+            <input class="modal_go" value="GO" type="submit">
+          </form>
+        </div>
       </div>
     </div>
   </div>
 <!-- //modal -->
-</body>
 <script type="text/javascript" src="mainscript.js"></script>
+</body>
 <!-- //frame -->
 </html>

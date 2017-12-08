@@ -8,6 +8,8 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     die('Error connecting to database');
 }
 
+
+//수입 거래 내역 가져와서 날짜별로 분류하기
 $current_date = date('Y-m-d');
 $start_month = date('Y-m-01');
 $end_month = date('Y-m-t', strtotime($current_date));
@@ -35,11 +37,46 @@ if($get->rowCount()>0){
     }
   endforeach;
 }
+//예산 설정
+$budget_arr = new SplFixedArray(32);
+$stmt = $connect->prepare('SELECT amount, startDate, endDate
+  FROM budget WHERE userID=:userID');
+$stmt->bindParam(':userID', $userID);
 
+$stmt->execute();
+
+$start_day; $end_day;
+$row = $stmt->fetch();
+$amount = (int)$row[0];
+
+if($stmt->rowCount()>0){
+  $current = date('Y-m-d');
+  if($row[1] <= $current){
+    $start_day = (int)date('d');
+
+    $before_day = date('d', strtotime($row[1]));
+    $current_day = date('d');
+    for($day=$before_day; $day<$current_day; $day++){
+      $amount -= (int)$expense_arr[(int)$day];
+    }
+  }else{
+    $start_day = (int)date('d', strtotime($row[1]));
+  }
+  $end_day = (int)date('t');
+}
+
+$budget_days = $end_day - $start_day + 1;
+$budget_per_day = (float)$amount / $budget_days;
+
+for($i=$start_day; $i<=$end_day; $i++){
+  $budget_arr[$i] = $budget_per_day - (int)$expense_arr[$i];
+}
+
+//달력 생성
 $day_of_week = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 $month_of_year = array('January','February','March','April','May','June','July','August','September','October','November','December');
 
-//  DECLARE AND INITIALIZE VARIABLESi
+//  DECLARE AND INITIALIZE VARIABLES
 $year = (int)date("Y");
 $month = (int)date("m");
 $today = (int)date("d");
@@ -61,12 +98,12 @@ $TH_end = '</TH>';
 $span_day_start = '<span class="day_header">';
 $span_day_end = '</span>';
 $add_btn = '<button type="button" onclick="add()" class="add_btn">+</button>';
-$day_content = '<font color="#d90057">3000</font><br> <font color="#ef7c29"> 1000 </font><br> <font color="#00a28b"> 2000 </font><br>';
 
 $day_idx = 1;
 $week_idx = $weekday;
 
-$cal = '<table class="cal">';
+$cal = '<caption>'.date('Y').'-'.date('m').'</caption>';
+$cal .= '<table class="cal">';
 $cal .= '<thead>'.$TR_start;
 
 //   DO NOT EDIT BELOW THIS POINT  //
@@ -101,25 +138,31 @@ for($index=0; $index < $DAYS_OF_MONTH; $index++) {
     }
     if($week_idx != $DAYS_OF_WEEK) {
       // SET VARIABLE INSIDE LOOP FOR INCREMENTING PURPOSES var day  = Calendar.getDate();
-      $day = $day_idx;
+    $expense_money = number_format($expense_arr[$day_idx], 0);
+    $income_money = number_format($income_arr[$day_idx], 0);
+    $budget_money = number_format($budget_arr[$day_idx], 0);
+    $day = $day_idx;
 
       // HIGHLIGHT TODAY'S DATE
       if( $today==$day_idx ){
           $cal .= $highlight_start.$span_day_start.$day.$add_btn.$span_day_end.'<br/>';
-          $cal.= '<font color="#d90057">'.$expense_arr[$day_idx].'</font><br> <font color="#ef7c29">'.$income_arr[$day_idx].'</font><br> <font color="#00a28b"> 2000 </font><br>';
+          $cal .= '<font color="#d90057">'.$expense_money.'</font><br> <font color="#ef7c29">'.$income_money.'</font><br>
+          <font color="#00a28b">'.$budget_money.'</font><br>';
           $cal .= $highlight_end.$TD_end;
         }
 
     // PRINTS DAY
     else if( $today < $day_idx){
         $cal .= $TD_start.$span_day_start.$day.$add_btn.$span_day_end.'<br />';
-        $cal.= '<font color="#d90057">'.$expense_arr[$day_idx].'</font><br> <font color="#ef7c29">'.$income_arr[$day_idx].'</font><br> <font color="#00a28b"> 2000 </font><br>';
+        $cal .= '<font color="#d90057">'.$expense_money.'</font><br> <font color="#ef7c29">'.$income_money.'</font><br>
+        <font color="#00a28b">'.$budget_money.'</font><br>';
         $cal .= $TD_end;
       }
 
     else{
         $cal .= $TD_start.$span_day_start.$day.$add_btn.$span_day_end.'<br />';
-        $cal.= '<font color="#d90057">'.$expense_arr[$day_idx].'</font><br> <font color="#ef7c29">'.$income_arr[$day_idx].'</font><br> <font color="#00a28b"> 2000 </font><br>';
+        $cal .= '<font color="#d90057">'.$expense_money.'</font><br> <font color="#ef7c29">'.$income_money.'</font><br>
+        <font color="#00a28b">'.$budget_money.'</font><br>';
         $cal .= $TD_end;
       }
     }

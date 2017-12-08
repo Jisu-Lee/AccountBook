@@ -25,15 +25,16 @@ $get->execute();
 $income_arr = new SplFixedArray(32);
 $expense_arr = new SplFixedArray(32);
 #string substr ( string $string , int $start [, int $length ] )
-
-foreach($get as $row) :
-  $day = (int)substr($row[2], 8, 2);
-  if(strcmp(substr($row[1], 0, 2), 'in') == 0){
-    $income_arr[$day] = (int)$income_arr[$day] + (int)$row[0];
-  }else{
-    $expense_arr[$day] = (int)$expense_arr[$day] + (int)$row[0];
-  }
-endforeach;
+if($get->rowCount()>0){
+  foreach($get as $row) :
+    $day = (int)substr($row[2], 8, 2);
+    if(strcmp(substr($row[1], 0, 2), 'in') == 0){
+      $income_arr[$day] = (int)$income_arr[$day] + (int)$row[0];
+    }else{
+      $expense_arr[$day] = (int)$expense_arr[$day] + (int)$row[0];
+    }
+  endforeach;
+}
 
 $day_of_week = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 $month_of_year = array('January','February','March','April','May','June','July','August','September','October','November','December');

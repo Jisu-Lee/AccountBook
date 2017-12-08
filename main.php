@@ -23,7 +23,7 @@
         <ul class="nav-list">
           <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
           <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
-          <li class="nav-item"> <a href="./userData.php" class="nav-link">회원정보</a> </li>
+          <li class="nav-item"> <a href="" class="nav-link">회원정보</a> </li>
 
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
           <li class="nav-item"> <a href="./mainLogin.php" class="nav-link">로그인</a> </li>
@@ -108,21 +108,21 @@
               <input type="text" id="category" name="category" />
               <div class="expense">
                   지출<br>
-                  <button type="button" value="지출:음식" onclick="setCategory(this.value)">음식</button>
-                  <button type="button" value="지출:의류" onclick="setCategory(this.value)">의류</button>
-                  <button type="button" value="지출:문화생활" onclick="setCategory(this.value)">문화생활</button>
-                  <button type="button" value="지출:생필품" onclick="setCategory(this.value)">생필품</button>
-                  <button type="button" value="지출:경조사" onclick="setCategory(this.value)">경조사</button>
-                  <button type="button" value="지출:적금" onclick="setCategory(this.value)">적금</button>
-                  <button type="button" value="지출:기타" onclick="setCategory(this.value)">기타</button>
+                  <button type="button" value="ex:food" onclick="setCategory(this.value)">음식</button>
+                  <button type="button" value="ex:clothing" onclick="setCategory(this.value)">의류</button>
+                  <button type="button" value="ex:culture" onclick="setCategory(this.value)">문화생활</button>
+                  <button type="button" value="ex:necessity" onclick="setCategory(this.value)">생필품</button>
+                  <button type="button" value="ex:event" onclick="setCategory(this.value)">경조사</button>
+                  <button type="button" value="ex:saving" onclick="setCategory(this.value)">적금</button>
+                  <button type="button" value="ex:other" onclick="setCategory(this.value)">기타</button>
               </div>
               <div class="income">
                   수입<br>
-                  <button type="button" value="수입:월급" onclick="setCategory(this.value)">월급</button>
-                  <button type="button" value="수입:용돈" onclick="setCategory(this.value)">용돈</button>
-                  <button type="button" value="수입:아르바이트" onclick="setCategory(this.value)">아르바이트</button>
-                  <button type="button" value="수입:보너스" onclick="setCategory(this.value)">보너스</button>
-                  <button type="button" value="수입:기타" onclick="setCategory(this.value)">기타</button>
+                  <button type="button" value="in:pay" onclick="setCategory(this.value)">월급</button>
+                  <button type="button" value="in:allowance" onclick="setCategory(this.value)">용돈</button>
+                  <button type="button" value="in:parttime" onclick="setCategory(this.value)">아르바이트</button>
+                  <button type="button" value="in:bonus" onclick="setCategory(this.value)">보너스</button>
+                  <button type="button" value="in:other" onclick="setCategory(this.value)">기타</button>
               </div>
             </div>
             <input class="modal_go" value="GO" type="submit">

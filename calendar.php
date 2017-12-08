@@ -9,10 +9,9 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 
 $current_date = date('Y-m-d');
-$start_month = date('Y-11-01');
+$start_month = date('Y-m-01');
 $end_month = date('Y-m-t', strtotime($current_date));
-#$userID = $_COOKIE['ID'];
-$userID = 'leeji';
+$userID = $_COOKIE['ID'];
 
 $get = $connect->prepare("SELECT amount, category, date_
   FROM transaction WHERE userID = :userID AND date_ >= :start_month

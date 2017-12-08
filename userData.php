@@ -38,8 +38,8 @@ $db = new PDO('mysql:host=localhost;dbname=account_book;charset=utf8;', $user, $
             </div>
             <div id="hide_and_show_budget" style="display:none">
   						<form action="./LSsupport.php?mode=modify" method="POST">
-                <p>ID : <input type="text" name="ID" required></p>
                 <p>변경할 비밀번호 : <input type="password" name="password" id="password" required></p>
+                <p>비밀번호 재입력 : <input type="password" name="password_re" id="password_re" required></p>
                 <p>Name : <input type="text" name="name" required></p>
               <input type="submit" value="Save"/>
   						</form>

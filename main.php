@@ -1,3 +1,97 @@
+<?php
+$year = (int)date("Y");
+$month = (int)date("m");
+$today = (int)date("d");
+
+$weekday = (int)date("w");
+$weekly_income[6] = 0;
+$weekly_outcome[6] = 0;
+$first_saturday = ($today % 7) + (6 - $weekday);
+
+
+$host = 'localhost';
+$user = 'root';
+$pw = 'root';
+$dbName = 'account_book';
+$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+$db = new PDO('mysql:host=localhost;dbname=account_book;charset=utf8;', $user, $pw, $pdo_options);
+
+$stmt = $db->prepare("SELECT amount, category, date_ FROM transaction WHERE userID=:ID");
+$ID = $_COOKIE['ID'];
+$stmt->bindParam(':ID',$ID);
+$result = $stmt->execute();
+
+$monthly_income = 0;
+$monthly_outcome = 0;
+
+if($stmt->rowCount()>0){
+foreach ($stmt as $row) :
+
+
+	if(strcmp(substr($row[1], 0, 2), 'ex') == 0){
+		$monthly_outcome += (int)($row[0]);
+
+		if(strtotime($year*10000+$month*100+1) <= strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday) >= strtotime($row[2])){
+			$weekly_outcome[0] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+7) >= strtotime($row[2])){
+			$weekly_outcome[1] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday+7) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+(7*2)) >= strtotime($row[2])){
+			$weekly_outcome[2] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday+(7*2)) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+(7*3)) >= strtotime($row[2])){
+			$weekly_outcome[3] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday+(7*3)) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+(7*4)) >= strtotime($row[2])){
+			$weekly_outcome[4] += (int)($row[0]);
+		}
+
+
+	}
+	else 	if(strcmp(substr($row[1], 0, 2), 'in') == 0){
+		$monthly_income += (int)($row[0]);
+
+		if(strtotime($year*10000+$month*100+1) <= strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday) >= strtotime($row[2])){
+			$weekly_income[0] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+7) >= strtotime($row[2])){
+			$weekly_income[1] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday+7) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+(7*2)) >= strtotime($row[2])){
+			$weekly_income[2] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday+(7*2)) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+(7*3)) >= strtotime($row[2])){
+			$weekly_income[3] += (int)($row[0]);
+		}
+		else if(strtotime($year*10000+$month*100+$first_saturday+(7*3)) < strtotime($row[2]) && strtotime($year*10000+$month*100+$first_saturday+(7*4)) >= strtotime($row[2])){
+			$weekly_income[4] += (int)($row[0]);
+		}
+	}
+endforeach;
+}
+else {
+
+
+#header("Location: mainLogin.php");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
 		<p style="text-align: center;">로그인되지 않았습니다.</p>
@@ -22,7 +116,7 @@
         <ul class="nav-list">
           <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
           <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
-          <li class="nav-item"> <a href="" class="nav-link">회원정보</a> </li>
+          <li class="nav-item"> <a href="./userData.php" class="nav-link">회원정보</a> </li>
 
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
           <li class="nav-item"> <a href="./mainLogin.php" class="nav-link">로그인</a> </li>
@@ -57,9 +151,9 @@
               </tr>
             </thead>
             <tr>
-              <td> 1000000 </td>
-              <td> 100000 </td>
-              <td> 900000 </td>
+              <td> <? echo $monthly_income; ?> </td>
+              <td> <? echo $monthly_outcome; ?> </td>
+              <td> <? echo $monthly_income - $monthly_outcome; ?> </td>
             </tr>
         </table>
       </div>
@@ -67,11 +161,11 @@
       <table class="week_total">
         <thead> <tr> <th> 주간지출 </th> </tr></thead>
         <tbody>
-        <tr><td> 50000 </td></tr>
-        <tr><td> 40000 </td></tr>
-        <tr><td> 30000 </td></tr>
-        <tr><td> 20000 </td></tr>
-        <tr><td> 10000 </td></tr>
+        <tr><td> <? echo $weekly_income[0] - $weekly_outcome[0]; ?> </td></tr>
+        <tr><td> <? echo $weekly_income[1] - $weekly_outcome[1]; ?> </td></tr>
+        <tr><td> <? echo $weekly_income[2] - $weekly_outcome[2]; ?> </td></tr>
+        <tr><td> <? echo $weekly_income[3] - $weekly_outcome[3]; ?> </td></tr>
+        <tr><td> <? echo $weekly_income[4] - $weekly_outcome[4]; ?> </td></tr>
       </tbody>
       </table>
     </div>

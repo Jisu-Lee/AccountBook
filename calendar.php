@@ -83,6 +83,8 @@ $today = (int)date("d");
 
 $weekday = (int)date("w");
 
+
+
 $DAYS_OF_WEEK = 7;    // "constant" for number of days in a week
 $DAYS_OF_MONTH = 31;    // "constant" for number of days in a month
 $cal;    // Used for printing

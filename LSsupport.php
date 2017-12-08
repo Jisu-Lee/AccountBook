@@ -82,18 +82,27 @@ switch($_GET['mode']){
       break;
 
       case 'modify':
-        $stmt = $db->prepare("UPDATE member SET ID = :ID, password = :password, name = :name WHERE ID = :ID AND phone_number = :phone_number AND name = :name");
-        $stmt->bindParam(':ID',$ID);
-        $stmt->bindParam(':password',$password);
-        $stmt->bindParam(':name',$name);
 
-        $ID = $_POST['ID'];
-        $password = $_POST['password'];
-        $name = $_POST['name'];
 
-        $stmt->execute();
-        echo "New records created successfully";
-        header("Location: main.php");
+
+          $stmt = $db->prepare("UPDATE member SET password = :password, name = :name WHERE ID = :ID");
+          $stmt->bindParam(':ID',$ID);
+          $stmt->bindParam(':password',$password);
+          $stmt->bindParam(':name',$name);
+
+          $ID = $_COOKIE["ID"];
+          $password = $_POST['password'];
+          $name = $_POST['name'];
+
+
+
+          $stmt->execute();
+          setcookie("ID", $_COOKIE["ID"], time() + 3600);
+          setcookie("password", $_POST["password"], time() + 3600);
+          setcookie("name", $_POST["name"], time() + 3600);
+          echo "New records created successfully";
+          header("Location: main.php");
+
       break;
 
 

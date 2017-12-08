@@ -5,7 +5,7 @@ $user = 'root';
 $pw = 'root';
 $dbName = 'account_book';
 $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-$db = new PDO('mysql:host=localhost;dbname=account_book', $user, $pw, $pdo_options);
+$db = new PDO('mysql:host=localhost;dbname=account_book;charset=utf8;', $user, $pw, $pdo_options);
 
 $stmt = $db->prepare("INSERT INTO budget (userID, startDate, endDate, amount) VALUES (:userID, :startDate, :endDate, :amount)");
 $stmt->bindParam(':userID',$userID);

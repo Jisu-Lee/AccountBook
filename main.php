@@ -23,7 +23,7 @@
         <ul class="nav-list">
           <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
           <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
-          <li class="nav-item"> <a href="" class="nav-link">회원정보</a> </li>
+          <li class="nav-item"> <a href="./userData.php" class="nav-link">회원정보</a> </li>
 
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
           <li class="nav-item"> <a href="./mainLogin.php" class="nav-link">로그인</a> </li>

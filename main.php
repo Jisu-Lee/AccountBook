@@ -9,6 +9,7 @@
       <title>가계부</title>
         <link rel="stylesheet" href="mainstyle.css" />
         <link rel="stylesheet" href="modalstyle.css" />
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
 <body>
   <div class="frame">
@@ -60,7 +61,7 @@
             </tr>
         </table>
       </div>
-      <script type="text/javascript" src="calendar.js"></script>
+			<?php include 'calendar.php'; ?>
       <table class="week_total">
         <thead> <tr> <th> 주간지출 </th> </tr></thead>
         <tbody>

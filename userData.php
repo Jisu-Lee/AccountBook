@@ -6,6 +6,65 @@ $dbName = 'account_book';
 $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 $db = new PDO('mysql:host=localhost;dbname=account_book;charset=utf8;', $user, $pw, $pdo_options);
 
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>회원정보 페이지</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="mainstyle.css" />
+        <link rel="stylesheet" href="modalstyle.css" />
+        <script type="text/javascript" src="mainscript.js"></script>
+
+
+    </head>
+    <body>
+      <div class="frame">
+        <div class="header">
+          <div class="logo"> 가계부 티끌모아 </div>
+        </div>
+
+        <div style="text-align: center;">
+          <p>
+            회원 정보
+          </p>
+          <p style="text-align: center;">이름: <?=$_COOKIE["name"]?></p>
+          <p style="text-align: center;">ID: <?=$_COOKIE["ID"]?></p>
+          <div class="content_header">
+
+            <div  style="display:inline-block">
+              <button type="button" id="budgetBtn" onclick="hide_and_show_func()">정보 변경</button>
+            </div>
+            <div id="hide_and_show_budget" style="display:none">
+  						<form action="./LSsupport.php?mode=modify" method="POST">
+                <p>ID : <input type="text" name="ID" required></p>
+                <p>변경할 비밀번호 : <input type="password" name="password" id="password" required></p>
+                <p>Name : <input type="text" name="name" required></p>
+              <input type="submit" value="Save"/>
+  						</form>
+            </div>
+
+        </div>
+        <div class="footer">
+          <p class="copyright">&copy;영은지수 </p>
+         </div>
+
+
+
+
+      </div>
+
+
+
+  </body>
+</html>
+
+
+<?
+
+
+
 switch($_GET['mode']){
     case 'signUp':
 
@@ -81,20 +140,6 @@ switch($_GET['mode']){
           }
       break;
 
-      case 'modify':
-        $stmt = $db->prepare("UPDATE member SET ID = :ID, password = :password, name = :name WHERE ID = :ID AND phone_number = :phone_number AND name = :name");
-        $stmt->bindParam(':ID',$ID);
-        $stmt->bindParam(':password',$password);
-        $stmt->bindParam(':name',$name);
-
-        $ID = $_POST['ID'];
-        $password = $_POST['password'];
-        $name = $_POST['name'];
-
-        $stmt->execute();
-        echo "New records created successfully";
-        header("Location: main.php");
-      break;
 
 
 }

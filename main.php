@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
 		<p style="text-align: center;">로그인되지 않았습니다.</p>
-		<? } else { ?>
+		<?header("Location: mainLogin.php");
+	 } else { ?>
 		<p style="text-align: center;">환영합니다. <?=$_COOKIE["name"]?>님</p>
 		<? } ?>
 <html>
@@ -9,6 +10,7 @@
       <title>가계부</title>
         <link rel="stylesheet" href="mainstyle.css" />
         <link rel="stylesheet" href="modalstyle.css" />
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
 <body>
   <div class="frame">
@@ -39,10 +41,12 @@
             <button type="button" class="budgetbtn" id="budgetBtn" onclick="hide_and_show_func()">예산<br/>설정</button>
           </div>
           <div id="hide_and_show_budget" style="display:none">
-            Start : <input type="date" size="5"name="startDate">
-            End : <input type="date" size="5" name="endDate" >
-            amount : <input type="text" size="3" name="amount" >
+						<form action="./budgetSupport.php" method="POST">
+	            Start : <input type="date" size="5"name="startDate">
+	            End : <input type="date" size="5" name="endDate" >
+	            amount : <input type="text" size="3" name="amount" >
             <input type="submit" value="Save"/>
+						</form>
           </div>
 
           <table class="budget">
@@ -60,7 +64,7 @@
             </tr>
         </table>
       </div>
-      <script type="text/javascript" src="calendar.js"></script>
+			<?php include 'calendar.php'; ?>
       <table class="week_total">
         <thead> <tr> <th> 주간지출 </th> </tr></thead>
         <tbody>

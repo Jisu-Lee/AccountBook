@@ -47,16 +47,16 @@
           $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
           $db = new PDO('mysql:host=localhost;dbname=account_book;charset=utf8;', $user, $pw, $pdo_options);
 
-          $get = $db->prepare("SELECT transID, date_, category, amount, detail FROM transaction WHERE userID=:userID");
+          $get = $db->prepare("SELECT transID, date_, category, amount, detail FROM transaction WHERE userID=:userID ORDER BY date_");
           $ID = $_COOKIE['ID'];
           $get->bindParam(':userID',$ID);
           $get->execute();
 
-          $get_ = $db->prepare("SELECT transID, date_, category, amount, detail FROM transaction WHERE userID=:userID");
+          $get_ = $db->prepare("SELECT transID, date_, category, amount, detail FROM transaction WHERE userID=:userID ORDER BY date_");
           $get_->bindParam(':userID',$ID);
           $get_->execute();
 
-          $get__ = $db->prepare("SELECT startDate, endDate, amount FROM budget WHERE userID=:userID");
+          $get__ = $db->prepare("SELECT startDate, endDate, amount FROM budget WHERE userID=:userID ORDER BY startDate");
           $get__->bindParam(':userID',$ID);
           $get__->execute();
 

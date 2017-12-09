@@ -124,9 +124,9 @@ else {
           </div>
           <div id="hide_and_show_budget" style="display:none">
 						<form action="./budgetSupport.php" method="POST">
-	            Start : <input type="date" size="5"name="startDate">
-	            End : <input type="date" size="5" name="endDate" >
-	            amount : <input type="number" size="3" name="amount" min="0">
+	            Start : <input type="date" size="5"name="startDate" required>
+	            End : <input type="date" size="5" name="endDate" required>
+	            amount : <input type="number" size="3" name="amount" min="1000">
             <input type="submit" value="Save"/>
 						</form>
           </div>
@@ -175,19 +175,19 @@ else {
         <form action="./action.php?mode=insert_trans" method="POST">
           <div class="modal_date">
               날짜<br>
-              <input type="text" id="date" name="date" disabled>
+              <input type="text" id="date" name="date" readonly />
           </div>
           <div class="modal_detail">
               상세내역<br>
-              <input type="text" id="detail" name="detail">
+              <input type="text" id="detail" name="detail" required />
           </div>
           <div class="modal_price">
               금액<br>
-              <input type="number" id="price" name="amount" min="0">
+              <input type="number" id="price" name="amount" min="1" required />
           </div>
           <div class="modal_category">
               카테고리<br>
-              <input type="text" id="category" name="category" disabled/>
+              <input type="text" id="category" name="category" value="ex:food" readonly />
               <div class="expense">
                   지출<br>
                   <button type="button" value="ex:food" onclick="setCategory(this.value)">음식</button>

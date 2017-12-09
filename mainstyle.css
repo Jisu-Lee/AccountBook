@@ -8,7 +8,7 @@ body {
 }
 
 .frame {
-  width:95%;
+  width:100%;
   height:100%;
   margin:0 auto;
   border: 1px solid $aaa;
@@ -63,8 +63,9 @@ body {
 }
 
 .content {
-  float:left;
+
   width:70%;
+  margin-left:160px;
 }
 
 .content_header {
@@ -143,7 +144,7 @@ button.add_btn {
 
 table.week_total{
   float:left;
-  width:10%;
+  width:13%;
   text-align: center;
   background-color: #e7e8ed;
   border-collapse: collapse;

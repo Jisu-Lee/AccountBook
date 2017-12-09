@@ -62,14 +62,14 @@ if($stmt->rowCount()>0){
   }else{
     $start_day = (int)date('d', strtotime($row[1]));
   }
-  $end_day = (int)date('t');
-}
+  $end_day = (int)date('d', strtotime($row[2]));
 
-$budget_days = $end_day - $start_day + 1;
-$budget_per_day = (float)$amount / $budget_days;
+  $budget_days = $end_day - $start_day + 1;
+  $budget_per_day = (float)$amount / $budget_days;
 
-for($i=$start_day; $i<=$end_day; $i++){
-  $budget_arr[$i] = $budget_per_day - (int)$expense_arr[$i];
+  for($i=$start_day; $i<=$end_day; $i++){
+    $budget_arr[$i] = $budget_per_day - (int)$expense_arr[$i];
+  }
 }
 
 //달력 생성
@@ -82,8 +82,6 @@ $month = (int)date("m");
 $today = (int)date("d");
 
 $weekday = (int)date("w");
-
-
 
 $DAYS_OF_WEEK = 7;    // "constant" for number of days in a week
 $DAYS_OF_MONTH = 31;    // "constant" for number of days in a month
@@ -102,7 +100,7 @@ $span_day_end = '</span>';
 $add_btn = '<button type="button" onclick="add()" class="add_btn">+</button>';
 
 $day_idx = 1;
-$week_idx = $weekday;
+$week_idx = (int)date('w', strtotime(date('Y-m-01')));
 
 $cal = '<caption>'.date('Y').'-'.date('m').'</caption>';
 $cal .= '<table class="cal">';
@@ -125,7 +123,7 @@ $cal .= $TR_end;
 $cal .= $TR_start;
 
 // FILL IN BLANK GAPS UNTIL TODAY'S DAY
-for($index=0; $index < $weekday; $index++){
+for($index=0; $index < $week_idx; $index++){
   $cal .= $TD_start."  ".$TD_end;
 }
 // LOOPS FOR EACH DAY IN CALENDAR

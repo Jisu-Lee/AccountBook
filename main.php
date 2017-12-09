@@ -186,7 +186,7 @@ else {
         <form action="./action.php?mode=insert_trans" method="POST">
           <div class="modal_date">
               날짜<br>
-              <input type="text" id="date" name="date" value="2017-11-09">
+              <input type="text" id="date" name="date">
           </div>
           <div class="modal_detail">
               상세내역<br>

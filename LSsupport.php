@@ -92,14 +92,17 @@ switch($_GET['mode']){
 
           $ID = $_COOKIE["ID"];
           $password = $_POST['password'];
+          $password_re = $_POST['password_re'];
           $name = $_POST['name'];
 
 
+          if($password == $password_re){
 
           $stmt->execute();
           setcookie("ID", $_COOKIE["ID"], time() + 3600);
           setcookie("password", $_POST["password"], time() + 3600);
           setcookie("name", $_POST["name"], time() + 3600);
+        }
           echo "New records created successfully";
           header("Location: main.php");
 

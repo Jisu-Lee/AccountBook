@@ -7,6 +7,7 @@ $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     die('Error connecting to database');
 }
 
+
 switch($_GET['mode']){
   case 'insert_trans':
 
@@ -30,6 +31,13 @@ switch($_GET['mode']){
     $category = $_POST['category'];
     $date = $_POST['date'];
     $detail = $_POST['detail'];
+
+echo $transID;
+echo $userID;
+echo $amount;
+echo $category;
+echo $date;
+echo $detail;
 
     $stmt->execute();
     print_r($stmt->errorInfo());

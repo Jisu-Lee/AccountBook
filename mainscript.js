@@ -1,10 +1,11 @@
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 var category = document.getElementById('category');
+var modal_date = document.getElementById('date');
 
-
-function add() {
+function add(day) {
   modal.style.display = "block";
+  modal_date.value = getFormattedDate(day);
 }
 
 span.onclick = function() {
@@ -24,4 +25,15 @@ function hide_and_show_func(){
     } else {
         x.style.display = "none";
     }
+}
+
+function getFormattedDate(day){
+  var today = new Date();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  var dd = day.toString();
+
+  if(dd<10) { dd = '0'+dd }
+  if(mm<10) { mm = '0'+mm }
+  return yyyy + "-" + mm + '-' + dd;
 }

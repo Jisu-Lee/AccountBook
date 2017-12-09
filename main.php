@@ -78,17 +78,6 @@ else {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
 
@@ -114,8 +103,8 @@ else {
     <div class="container">
       <div class="nav">
         <ul class="nav-list">
-          <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
-          <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
+          <li class="nav-item"> <a href="./main.php" class="nav-link">메인</a> </li>
+          <li class="nav-item"> <a href="./statistics.php" class="nav-link">통계</a> </li>
           <li class="nav-item"> <a href="./userData.php" class="nav-link">회원정보</a> </li>
 
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
@@ -137,7 +126,7 @@ else {
 						<form action="./budgetSupport.php" method="POST">
 	            Start : <input type="date" size="5"name="startDate">
 	            End : <input type="date" size="5" name="endDate" >
-	            amount : <input type="text" size="3" name="amount" >
+	            amount : <input type="number" size="3" name="amount" min="0">
             <input type="submit" value="Save"/>
 						</form>
           </div>
@@ -159,7 +148,7 @@ else {
       </div>
 			<?php include 'calendar.php'; ?>
       <table class="week_total">
-        <thead> <tr> <th> 주간지출 </th> </tr></thead>
+        <thead> <tr> <th> 주간잔액 </th> </tr></thead>
         <tbody>
         <tr><td> <? echo $weekly_income[0] - $weekly_outcome[0]; ?> </td></tr>
         <tr><td> <? echo $weekly_income[1] - $weekly_outcome[1]; ?> </td></tr>
@@ -186,7 +175,7 @@ else {
         <form action="./action.php?mode=insert_trans" method="POST">
           <div class="modal_date">
               날짜<br>
-              <input type="text" id="date" name="date">
+              <input type="text" id="date" name="date" disabled>
           </div>
           <div class="modal_detail">
               상세내역<br>
@@ -194,11 +183,11 @@ else {
           </div>
           <div class="modal_price">
               금액<br>
-              <input type="text" id="price" name="amount">
+              <input type="number" id="price" name="amount" min="0">
           </div>
           <div class="modal_category">
               카테고리<br>
-              <input type="text" id="category" name="category" />
+              <input type="text" id="category" name="category" disabled/>
               <div class="expense">
                   지출<br>
                   <button type="button" value="ex:food" onclick="setCategory(this.value)">음식</button>

@@ -97,7 +97,8 @@ $TH_start = '<TH>';
 $TH_end = '</TH>';
 $span_day_start = '<span class="day_header">';
 $span_day_end = '</span>';
-$add_btn = '<button type="button" onclick="add()" class="add_btn">+</button>';
+$add_btn_start = '<button type="button" class="add_btn" onclick="add(';
+$add_btn_end = ')">+</button>';
 
 $day_idx = 1;
 $week_idx = (int)date('w', strtotime(date('Y-m-01')));
@@ -145,7 +146,7 @@ for($index=0; $index < $DAYS_OF_MONTH; $index++) {
 
       // HIGHLIGHT TODAY'S DATE
       if( $today==$day_idx ){
-          $cal .= $highlight_start.$span_day_start.$day.$add_btn.$span_day_end.'<br/>';
+          $cal .= $highlight_start.$span_day_start.$day.$add_btn_start.$day.$add_btn_end.$span_day_end.'<br/>';
           $cal .= '<font color="#d90057">'.$expense_money.'</font><br> <font color="#ef7c29">'.$income_money.'</font><br>
           <font color="#00a28b">'.$budget_money.'</font><br>';
           $cal .= $highlight_end.$TD_end;
@@ -153,14 +154,14 @@ for($index=0; $index < $DAYS_OF_MONTH; $index++) {
 
     // PRINTS DAY
     else if( $today < $day_idx){
-        $cal .= $TD_start.$span_day_start.$day.$add_btn.$span_day_end.'<br />';
+        $cal .= $TD_start.$span_day_start.$day.$add_btn_start.$day.$add_btn_end.$span_day_end.'<br />';
         $cal .= '<font color="#d90057">'.$expense_money.'</font><br> <font color="#ef7c29">'.$income_money.'</font><br>
         <font color="#00a28b">'.$budget_money.'</font><br>';
         $cal .= $TD_end;
       }
 
     else{
-        $cal .= $TD_start.$span_day_start.$day.$add_btn.$span_day_end.'<br />';
+        $cal .= $TD_start.$span_day_start.$day.$add_btn_start.$day.$add_btn_end.$span_day_end.'<br />';
         $cal .= '<font color="#d90057">'.$expense_money.'</font><br> <font color="#ef7c29">'.$income_money.'</font><br>
         <font color="#00a28b">'.$budget_money.'</font><br>';
         $cal .= $TD_end;

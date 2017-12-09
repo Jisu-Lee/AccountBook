@@ -78,17 +78,6 @@ else {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
 
@@ -137,7 +126,7 @@ else {
 						<form action="./budgetSupport.php" method="POST">
 	            Start : <input type="date" size="5"name="startDate">
 	            End : <input type="date" size="5" name="endDate" >
-	            amount : <input type="text" size="3" name="amount" >
+	            amount : <input type="number" size="3" name="amount" min="0">
             <input type="submit" value="Save"/>
 						</form>
           </div>
@@ -186,7 +175,7 @@ else {
         <form action="./action.php?mode=insert_trans" method="POST">
           <div class="modal_date">
               날짜<br>
-              <input type="text" id="date" name="date">
+              <input type="text" id="date" name="date" disabled>
           </div>
           <div class="modal_detail">
               상세내역<br>
@@ -194,11 +183,11 @@ else {
           </div>
           <div class="modal_price">
               금액<br>
-              <input type="text" id="price" name="amount">
+              <input type="number" id="price" name="amount" min="0">
           </div>
           <div class="modal_category">
               카테고리<br>
-              <input type="text" id="category" name="category" />
+              <input type="text" id="category" name="category" disabled/>
               <div class="expense">
                   지출<br>
                   <button type="button" value="ex:food" onclick="setCategory(this.value)">음식</button>

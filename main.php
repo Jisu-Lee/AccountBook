@@ -114,8 +114,8 @@ else {
     <div class="container">
       <div class="nav">
         <ul class="nav-list">
-          <li class="nav-item"> <a href="" class="nav-link">메인</a> </li>
-          <li class="nav-item"> <a href="" class="nav-link">통계</a> </li>
+          <li class="nav-item"> <a href="./main.php" class="nav-link">메인</a> </li>
+          <li class="nav-item"> <a href="./statistics.php" class="nav-link">통계</a> </li>
           <li class="nav-item"> <a href="./userData.php" class="nav-link">회원정보</a> </li>
 
 <? if (!isset($_COOKIE["ID"]) || !isset($_COOKIE["password"])) { ?>
@@ -159,7 +159,7 @@ else {
       </div>
 			<?php include 'calendar.php'; ?>
       <table class="week_total">
-        <thead> <tr> <th> 주간지출 </th> </tr></thead>
+        <thead> <tr> <th> 주간잔액 </th> </tr></thead>
         <tbody>
         <tr><td> <? echo $weekly_income[0] - $weekly_outcome[0]; ?> </td></tr>
         <tr><td> <? echo $weekly_income[1] - $weekly_outcome[1]; ?> </td></tr>
